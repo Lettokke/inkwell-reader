@@ -406,4 +406,16 @@ document.querySelectorAll("nav.tabbar button").forEach(btn=>{
 
 document.getElementById("searchInput").addEventListener("input", (e)=>{
   clearTimeout(searchTimer);
-  const val = e.target.value.trim(
+  const val = e.target.value.trim();
+  if(currentTab !== "search"){
+    document.querySelectorAll("nav.tabbar button").forEach(b=>b.classList.remove("active"));
+    document.querySelector('[data-tab="search"]').classList.add("active");
+    currentTab = "search";
+  }
+  searchTimer = setTimeout(()=> renderSearch(val), 400);
+});
+
+renderHome();
+</script>
+</body>
+</html>
